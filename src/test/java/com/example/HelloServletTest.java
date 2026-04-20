@@ -29,8 +29,15 @@ public class HelloServletTest {
         servlet.doGet(request, response);
 
         writer.flush();
+        String result = stringWriter.toString();
+
+        assert(result.contains("Deployment Successful!"));
+        assert(result.contains("GitHub"));
+        assert(result.contains("Jenkins"));
+        assert(result.contains("Docker"));
+        assert(result.contains("Tomcat 11"));
 
         verify(response).setContentType("text/html");
-        assert stringWriter.toString().contains("Hello from Servlet");
+       
     }
 }
